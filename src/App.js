@@ -12,9 +12,9 @@ class App extends React.Component {
     green:"0",
     blue:"0",
     alpha:"0",
-    blink: "",
+    blink: "rgba(0, 0, 0, 0)",
     on: false,
-    timing: ""
+    timing: "1"
   };
   onOff = () => {
     this.setState({
@@ -41,17 +41,18 @@ class App extends React.Component {
       menu.className='hamburger hamburger--vortex is-active'
       let logo=document.querySelector('.logo')
       logo.style.color='black';
-      let hamburgerBox=document.querySelector('.hamburger-box')
-      hamburgerBox.style.backgroundColor='white'
+      // let hamburgerBox=document.querySelector('.hamburger-box')
+      // hamburgerBox.style.backgroundColor='white'
     }
-    this.setState({ menu: !this.state.menu });
+    this.setState({ menu: !this.state.menu ,on:false});
   };
   closeMenu = () =>{
     let menu=document.querySelector('#menu')
     menu.className='hamburger hamburger--vortex'
     this.logoBurgerColor()
     this.setState({
-      menu: false
+      menu: false,
+      on:true
     })
   }
   logoBurgerColor = () =>{
@@ -59,7 +60,7 @@ class App extends React.Component {
 
 	var yiq = ((this.state.red*299)+(this.state.green*587)+(this.state.blue*114))/1000;
   var opacity= this.state.alpha
-  if(yiq >=128 ||opacity<0.5){
+  if(yiq >= 128 ||opacity<0.5){
       let logo=document.querySelector('.logo')
       logo.style.color='black';
 
@@ -69,10 +70,15 @@ class App extends React.Component {
       logo.style.color='white';
       let hamburger=document.querySelector('.hamburger')
       hamburger.style.backgroundColor='white'
-    
+
     }
   }
-  render() {
+  setBlink = (value) =>{
+      this.setState({
+        blink:value
+      })
+  }
+   render() {
     return (
       <div className="App">
         <div className="logoBurger">
@@ -95,6 +101,8 @@ class App extends React.Component {
             green={this.state.green}
             blue={this.state.blue}
             alpha={this.state.alpha}
+            blink={this.state.blink}
+            setBlink={this.setBlink}
           />
         ) : null}
         <Screen

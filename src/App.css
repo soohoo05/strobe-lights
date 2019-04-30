@@ -44,7 +44,7 @@ letter-spacing: 3px;
 
 .error{
   text-align: center;
-  height:5vh;
+  height:3vh;
 }
 
 .startButton{
@@ -58,4 +58,10 @@ letter-spacing: 3px;
   width: 90vw;
   border-style: solid;
   margin: 0 auto;
+}
+
+.selector{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
