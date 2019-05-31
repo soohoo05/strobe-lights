@@ -14,12 +14,12 @@ class Screen extends React.Component {
 
     }
       var interval= setInterval(this.changeColor,200);
-
   }
   changeColor = () =>{
     let screen = document.querySelector('.screen')
     if(screen.style.backgroundColor===this.props.blink){
       screen.style.backgroundColor=`rgba(${this.props.red},${this.props.green},${this.props.blue},${this.props.alpha})`
+
     }
     else{
       screen.style.backgroundColor=this.props.blink
